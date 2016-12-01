@@ -17,42 +17,6 @@
 #define SERVER_PORT         6666
 #define MAX_LINKS           10
 
-void ip_ultos(uint32_t uipadrr ,char *s)
-{
-    int i = 0,j = 0,n;
-    char byte[4];
-    for(i = 0;i < 4;i++){
-        byte[i] = uipadrr&0xff;
-        uipadrr >>= 8;
-
-        n = byte[i]/100;
-        if(n > 0)
-        {
-            s[j++] = n + '0';
-        }
-        else
-        {
-            s[j++] = ' ';
-        }
-        printf("%c",s[j-1]);
-        n = byte[i]%100/10;
-        if(n > 0)
-        {
-            s[j++] = n + '0';
-        }
-        else
-        {
-            s[j++] = ' ';
-        }
-printf("%c",s[j-1]);
-        s[j++] = byte[i]%10 + '0';
-        printf("%c",s[j-1]);
-        s[j++] = '.';
-        printf("%c",s[j-1]);
-    }
-    s[--j] = '\0';
-}
-
 int main(int argc, char *argv[])
 {
     int listenfd, connfd;
